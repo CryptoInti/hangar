@@ -54,10 +54,10 @@ export const Fleet: React.FC<Props> = ({
         <Header imgUrl={image} />
         <Body>
           <Title>{name}</Title>
-          <Count>{size}</Count>
+          <Count> x {size}</Count>
           <TotalPaid>{totalPaid} (GTR) </TotalPaid>
-          <RewardPerDay>{rewardPerDay}(24h) </RewardPerDay>
-          <PendingRewards>{pendingRewards}<AtlasIcon width={"20"} height={20} /></PendingRewards>
+          <RewardPerDay>*24h {rewardPerDay} <AtlasIcon width={"9"} height={9} /></RewardPerDay>
+          <PendingRewards>{pendingRewards}<AtlasIcon width={"15"} height={15} /></PendingRewards>
         
           
           <RemainingTime>
@@ -177,10 +177,10 @@ const Title = styled.div`
 const PendingRewards = styled.div`
   display: flex;
   color: #fff;
-  justify-content: right;
-  align-items: right;
+  justify-content: center;
+  align-items: center;
   font-size: 17px;
-  border: 1px solid #000;
+  border: 1px solid #dbdbdb9b;
   position: absolute;
   background: #080808c2;
   border-radius: 7px;
@@ -193,15 +193,16 @@ const PendingRewards = styled.div`
 
 const RewardPerDay = styled.div`
   display: flex;
-  justify-content: right;
-  align-items: right;
+  justify-content: space-between;
+  align-items: center;
   font-size: 12px;
+  border: 1px solid #dbdbdb9b;
   position: absolute;
   background: #080808c2;
-  border-radius: 1px;
-  padding: 2px 2px 0 2px;
-  top: -111%;
-  right: 1px;
+  border-radius: 15px;
+  padding: 2px 6px;
+  top: -25.5%;
+  right: 50px;
   height: 20px;
   width: auto;
 `;
