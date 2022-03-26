@@ -3,7 +3,7 @@ import { Transaction } from "@solana/web3.js";
 import * as React from "react";
 import styled from "styled-components";
 import shallow from "zustand/shallow";
-import { ATLAS_DECIMAL, CONN, PALLETE } from "../constants";
+import { ATLAS_DECIMAL, USDC_DECIMAL, CONN, PALLETE } from "../constants";
 import { useAppStore, useFleetStore } from "../data/store";
 import {
   ErrorModalTypes,
@@ -17,6 +17,7 @@ import { AtlasIcon } from "./Atlas";
 import Resources from "./Resources";
 import { Container } from "./shared/styled/Styled";
 import { ReactComponent as LoadingSpinner } from "../assets/images/spinner.svg";
+import { number } from "mathjs";
 
 export const Content = () => {
   const fleets = useFleetStore((state) => state.fleets);
@@ -39,6 +40,7 @@ export const Content = () => {
     shallow
   );
   const [totalClaim, setTotalClaim] = React.useState(0);
+  const [totalDay, setTotalDay] = React.useState(0);
   const { publicKey, signAllTransactions, signTransaction } = useWallet();
   const isRefreshing = useAppStore((state) => state.refreshing);
 
@@ -51,8 +53,21 @@ export const Content = () => {
   React.useEffect(() => {
     if (fleets.length > 0) {
       setTotalClaim(FleetService.getPendingAtlas());
+      setTotalDay(FleetService.getRewardPerDay())
     }
   }, [fleets]);
+
+  let [usd_price, setUsdPrice] = React.useState([] as any);
+
+  React.useEffect(() => {
+    fetch('https://api.coingecko.com/api/v3/simple/price?ids=star-atlas&vs_currencies=usd')
+      .then((res) => res.json())
+      .then((result) => {
+        console.dir(result['star-atlas']);
+        setUsdPrice(result['star-atlas'].usd);
+        console.dir(typeof(usd_price));
+      });
+  }, []);
 
   const onClaimAllClick = async () => {
     if (publicKey && signAllTransactions && signTransaction) {
@@ -126,7 +141,11 @@ export const Content = () => {
             <Title align="center">PENDING REWARDS</Title>
             <div>
               <AtlasIcon width={"100%"} height={100} />
-              <h2 style={{marginTop:16}}>{thousandsFormatter(totalClaim, ATLAS_DECIMAL)}</h2>
+              <h2 style={{marginTop:16}}>{thousandsFormatter(totalClaim, ATLAS_DECIMAL)} (${(usd_price * totalClaim).toFixed(3)})</h2>
+              <h3>{thousandsFormatter(totalDay, ATLAS_DECIMAL)} (24h) (${(usd_price * totalDay).toFixed(3)})</h3>
+              {/* <h2 style={{marginTop:16}}>${usd_price.toFixed(3)}</h2>
+              <h2 style={{marginTop:16}}></h2> */}
+              
             </div>
             <PrimaryBtn onClick={onClaimAllClick}>CLAIM ALL</PrimaryBtn>
           </PendingSection>

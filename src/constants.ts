@@ -180,7 +180,7 @@ export const FUEL_TOKEN = new Token(
 
 
 export const ATLAS_DECIMAL = 1;
-export const USDC_DECIMAL = 2;
+export const USDC_DECIMAL = 4;
 export const RESOURCE_DECIMAL = 0;
 export const FEE = 0.05
 export const FIXED_FEE = 1

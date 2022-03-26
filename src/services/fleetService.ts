@@ -91,6 +91,9 @@ export class FleetService {
           `https://galaxy.staratlas.com/nfts/${shipMint.toString()}`
         );
         
+        console.log("shipNftInfo");
+        console.dir(shipNftInfo);
+
       
         const urlSplit = shipNftInfo.data.image.slice(0,-4).split("/")
         const imageName = urlSplit[urlSplit.length - 1]
@@ -100,6 +103,7 @@ export class FleetService {
           image: `"https://api.staratlas.club/thumb/320x180?url=https://storage.googleapis.com/nft-assets/items/${imageName}.jpg"`,
           resources: FleetService.getFleetRemainingResources(shipInfo, fleet),
           pendingRewardsV2: FleetService.getReward(shipInfo, fleet) / 100000000,
+          rewardDay: (Number(shipInfo.rewardRatePerSecond)/ 100000000) * 60 * 60 * 24,
         });
 
         // End Promise
@@ -591,9 +595,14 @@ export class FleetService {
  }
 
  public static getPendingAtlas()  {
-   
   return useFleetStore.getState().fleets.reduce((sum, fleet) => {
     return sum + fleet.pendingRewardsV2;
+  } ,0)
+ }
+
+ public static getRewardPerDay()  {
+  return useFleetStore.getState().fleets.reduce((sum, fleet) => {
+    return sum + fleet.rewardDay;
   } ,0)
  }
 

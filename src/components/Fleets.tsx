@@ -2,13 +2,16 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import * as React from "react";
 import styled from "styled-components";
 import shallow from "zustand/shallow";
-import { PALLETE } from "../constants";
+import { ATLAS_DECIMAL, PALLETE } from "../constants";
 import { useAppStore, useFleetStore, useResourceStore } from "../data/store";
 import { IFleet } from "../data/types";
 import { FleetService } from "../services/fleetService";
 import { MarketService } from "../services/marketService";
 import { Fleet } from "./Fleet";
 import { Container } from "./shared/styled/Styled";
+import { thousandsFormatter } from "../utils";
+
+
 
 
 const Fleets = () => {
@@ -76,11 +79,19 @@ const Fleets = () => {
                   selected={
                     !!selectedFleets.find((sf) => sf.name == fleet.name)
                   }
+                  totalPaid={thousandsFormatter(Number(fleet.totalRewardsPaid)/ 100000000, ATLAS_DECIMAL)}
+                  pendingRewards={thousandsFormatter(fleet.pendingRewardsV2, ATLAS_DECIMAL)}
+                  rewardPerDay={thousandsFormatter(fleet.rewardDay, ATLAS_DECIMAL)}
                 />
               ))}
 
             </FleetItems>
-            {/* <Spinner isLoading={isLoading} /> */}
+            {/* <Spinner isLoading={isLoading} /> */
+            fleets.map((fleet, indx) => {
+              console.log("in fleet name"+fleet.name+" flip "+indx);
+              console.dir(fleet);
+            })
+            }
           </div>
         </FleetWrapper>
       </Container>

@@ -469,14 +469,14 @@ export const Resources: React.FC<Props> = () => {
                 </DropdownButton>
         </SupplyButtons>
         <SupplyButtons>
-          {/* <SupplyButton onClick={onBuySupplyClick}>
+          <SupplyButton onClick={onBuySupplyClick}>
             <span>1.</span>BUY SUPPLIES
           </SupplyButton>
           <SupplyButton onClick={onSettleFundsClick}>
             <span>2.</span>SETTLE FUNDS
-          </SupplyButton> */}
+          </SupplyButton>
           <SupplyButton onClick={onResupplyClick}>
-            <span>1.</span>RESUPPLY
+            <span>3.</span>RESUPPLY
           </SupplyButton>
         </SupplyButtons>
       </Actions>

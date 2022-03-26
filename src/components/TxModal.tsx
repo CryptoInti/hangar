@@ -49,6 +49,10 @@ export const TxModal: React.FC<Props> = ({
   const signaturesToWait = useAppStore((state) => state.signaturesToWait);
   const setSignaturesToWait = useAppStore((state) => state.setSignaturesToWait);
   const tips = [
+    { text: "0.01%", value: 0.0001 },
+    { text: "0.1%", value: 0.001 },
+    { text: "0.5%", value: 0.005 },
+    { text: "1%", value: 0.01 },
     { text: "2%", value: 0.02 },
     { text: "5%", value: 0.05 },
     { text: "10%", value: 0.1 },

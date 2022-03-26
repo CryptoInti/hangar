@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { COLORS, PALLETE } from "../constants";
 import { getHours } from "../utils";
 import { Clock } from "./Clock";
+import { AtlasIcon } from "./Atlas";
+
 
 interface Props {
   name: string;
@@ -11,7 +13,10 @@ interface Props {
   size: number;
   onSelectFleet: () => void;
   onUnSelectFleet: () => void;
-  selected: boolean
+  selected: boolean;
+  totalPaid: any;
+  pendingRewards: any;
+  rewardPerDay: any;
 }
 
 export const Fleet: React.FC<Props> = ({
@@ -21,7 +26,10 @@ export const Fleet: React.FC<Props> = ({
   secondsLeft,
   onSelectFleet,
   onUnSelectFleet,
-  selected
+  selected,
+  totalPaid,
+  pendingRewards,
+  rewardPerDay,
 }) => {
   const fleetRef = React.useRef<HTMLDivElement>(null);
 
@@ -47,6 +55,11 @@ export const Fleet: React.FC<Props> = ({
         <Body>
           <Title>{name}</Title>
           <Count>{size}</Count>
+          <TotalPaid>{totalPaid} (GTR) </TotalPaid>
+          <RewardPerDay>{rewardPerDay}(24h) </RewardPerDay>
+          <PendingRewards>{pendingRewards}<AtlasIcon width={"20"} height={20} /></PendingRewards>
+        
+          
           <RemainingTime>
             <Clock seconds={secondsLeft} color={color} />
           </RemainingTime>
@@ -140,21 +153,6 @@ const Body = styled.div`
   }
 `;
 
-const Count = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 12px;
-  border: 1px solid #dbdbdb9b;
-  position: absolute;
-  background: #080808c2;
-  border-radius: 15px;
-  top: -25.5%;
-  right: 5px;
-  height: 20px;
-  width: 40px;
-`;
-
 const IconWrapper = styled.svg`
   width: 15px;
   height: 15px;
@@ -174,4 +172,68 @@ const Title = styled.div`
   text-align: center;
   font-size: 14px;
   font-weight: bold;
+`;
+
+const PendingRewards = styled.div`
+  display: flex;
+  color: #fff;
+  justify-content: right;
+  align-items: right;
+  font-size: 17px;
+  border: 1px solid #000;
+  position: absolute;
+  background: #080808c2;
+  border-radius: 7px;
+  padding: 2px 2px 0 2px;
+  top: -73%;
+  right: 1px;
+  height: auto;
+  width: auto;
+`;
+
+const RewardPerDay = styled.div`
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  font-size: 12px;
+  position: absolute;
+  background: #080808c2;
+  border-radius: 1px;
+  padding: 2px 2px 0 2px;
+  top: -111%;
+  right: 1px;
+  height: 20px;
+  width: auto;
+`;
+
+const Count = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  border: 1px solid #dbdbdb9b;
+  position: absolute;
+  background: #080808c2;
+  border-radius: 15px;
+  top: -25.5%;
+  right: 5px;
+  height: 20px;
+  width: 40px;
+`;
+
+const TotalPaid = styled.div`
+  display: flex;
+  color: #dbdbdb9b;
+  justify-content: right;
+  align-items: right;
+  font-size: 12px;
+  border: 1px solid #000;
+  position: absolute;
+  background: #080808c2;
+  border-radius: 1px;
+  padding: 2px 2px 0 2px;
+  top: -136%;
+  right: 1px;
+  height: 20px;
+  width: auto;
 `;
