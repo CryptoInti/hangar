@@ -602,7 +602,7 @@ export class FleetService {
 
  public static getRewardPerDay()  {
   return useFleetStore.getState().fleets.reduce((sum, fleet) => {
-    return sum + fleet.rewardDay;
+    return sum + (fleet.rewardDay * Number(fleet.shipQuantityInEscrow));
   } ,0)
  }
 
