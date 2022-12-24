@@ -1,4 +1,6 @@
-{
+{ "name": "Hangar-HEIM-app",
+  "version": "1.0.0",
+  "homepage": "https://cryptointi.github.io/hangar",
   "scripts": {
     "clean": "shx rm -rf dist dist.browser",
     "start": "react-app-rewired start",
