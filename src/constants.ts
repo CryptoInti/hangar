@@ -12,7 +12,9 @@ export const COLORS = {
   THICK_GREY: "#c5c3c3",
 };
 
-export const CONN = new Connection("https://solana--mainnet.datahub.figment.io/apikey/0fa79b2db1518fd6bd044232ed16f097");
+export const CONN = new Connection("https://nameless-weathered-silence.solana-mainnet.quiknode.pro/ceab01bf7beca5eb963f2183939f1e8fa5d0514e/");
+// https://solana--mainnet.datahub.figment.io/apikey/0fa79b2db1518fd6bd044232ed16f097
+
 export const FLEET_PROGRAM = new PublicKey(
   "FLEET1qqzpexyaDpqb2DGsSzE2sDCizewCg9WjrA6DBW"
 );
