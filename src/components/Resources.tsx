@@ -469,14 +469,14 @@ export const Resources: React.FC<Props> = () => {
                 </DropdownButton>
         </SupplyButtons>
         <SupplyButtons>
-          <SupplyButton onClick={onBuySupplyClick}>
+          {/* <SupplyButton onClick={onBuySupplyClick}>
             <span>1.</span>BUY SUPPLIES
           </SupplyButton>
           <SupplyButton onClick={onSettleFundsClick}>
             <span>2.</span>SETTLE FUNDS
-          </SupplyButton>
+          </SupplyButton> */}
           <SupplyButton onClick={onResupplyClick}>
-            <span>3.</span>RESUPPLY
+            <div>RESUPPLY</div>
           </SupplyButton>
         </SupplyButtons>
       </Actions>
@@ -527,9 +527,11 @@ const SupplyButtons = styled.div`
 `;
 
 const SupplyButton = styled(Button)<{ disabled?: boolean }>`
-  height: 34px;
+  height: 100%; 
   width: 100%;
-  margin-bottom: 8px;
+  font-size: 44px;
+  display: flex;
+  justify-content: center;
   span {
     display: inline-block;
     width: 10%;
