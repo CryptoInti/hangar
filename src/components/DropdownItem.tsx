@@ -39,6 +39,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   padding: 8px 8px;
   width: 100%;
+  height: 100%;
   font-size: ${PALLETE.FONT_SM};
   align-items: center;
   cursor: pointer;

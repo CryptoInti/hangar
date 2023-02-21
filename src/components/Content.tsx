@@ -204,7 +204,8 @@ const ContentWrapper = styled.div`
 const PrimaryBtn = styled.button`
   padding: 8px 16px;
   border-radius: 4px;
-  height: 34px;
+  height: 22%;
+  font-size: 44px;
   background-color: ${PALLETE.CLUB_RED};
   color: ${PALLETE.FONT_COLOR};
   cursor: pointer;
