@@ -47,11 +47,11 @@ export const ErrorModal = () => {
             </Header>
             <Sperator />
             <Body maxWidth='600px'>
-              <p >Apparently, you have not previously traded at least some of required resources. Before you can use <b>Pitstop</b>, you need to buy the following resources once on the <b>Star Stlas</b> market for at least <b>1 ATLAS</b>:</p>
+              <p >Apparently, you have not previously traded at least some of required resources. Before you can use <b>Hangar</b>, you need to buy the following resources once on the <b>Star Stlas</b> market for at least <b>1 ATLAS</b>:</p>
               <ul style={{padding:'8px 16px'}}>
                 {content.message?.split(",").map((resource, indx) => <li key={indx}>{resource}</li>)}
               </ul>
-              <p >It is important to do it right <Link href="https://play.staratlas.com/market" target="_blank">here</Link>. Having done so, you will be able to continue using <b>Pitstop</b>.</p>
+              <p >It is important to do it right <Link href="https://play.staratlas.com/market" target="_blank">here</Link>. Having done so, you will be able to continue using <b>Hangar</b>.</p>
             </Body>
           </Wrapper>
         </Modal>
